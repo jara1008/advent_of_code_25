@@ -1,0 +1,4 @@
+Apple,15,0.50
+Banana,22,0.30
+Orange,10,0.75
+Grapes,5,2.00
