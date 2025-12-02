@@ -22,11 +22,11 @@ def puzzle_1(input):
 
 # Helperfunction
 def check_same_seq(s, numstring):
-    chunks = [numstring[i:i+s] for i in range(0, len(numstring), s)]
-    first_chunk = chunks[0]
-    if len(chunks) < 2: return False
-    for i in range(1, len(chunks)):
-        if chunks[i] != first_chunk: return False
+    first = numstring[:s]
+    if len(numstring) < 2*s: return False
+    for i in range(s, len(numstring), s):
+        if numstring[i:i+s] != first:
+            return False
     return True
 
 def puzzle_2(input):
@@ -36,7 +36,7 @@ def puzzle_2(input):
         start, end = int(numrange[0]), int(numrange[1])
         for i in range(start, end + 1):
             numstr = str(i)
-            seq_sizes = [1, 2, 3, 4, 5]
+            seq_sizes = [s for s in (1,2,3,4,5) if len(numstr) % s == 0]
             for s in seq_sizes:
                 if check_same_seq(s, numstr):
                     sum += i
